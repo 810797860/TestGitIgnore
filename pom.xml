@@ -61,7 +61,7 @@
 						<phase>install</phase>
 						<configuration>
 							<tasks>
-								<copy todir="D:\java\Idea\TestGitIgnore\TestGitIgnore\TestGitIgnore\docker"> <!--  文件将要输出目录 在parent pom中统一配置，此处引用即可-->
+								<copy todir="./docker"> <!--  文件将要输出目录 在parent pom中统一配置，此处引用即可-->
 									<fileset dir="${project.build.directory}"> <!-- 待拷贝文件的目录，默认目录在项目的target下-->
 										<include name="*.jar" /> <!-- 待拷贝文件，可以使用下面的通配符，还可以是其他目录的文件。此处需要与project.bulid.finalName对应，否则可能找不到文件 -->
 									</fileset>
@@ -75,7 +75,7 @@
 				</executions>
 			</plugin>
 
-			<!--jib 构建插件-->
+			<!--&lt;!&ndash;jib 构建插件&ndash;&gt;
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
@@ -108,7 +108,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>-->
 		</plugins>
 	</build>
 
