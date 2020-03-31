@@ -75,7 +75,7 @@
 				</executions>
 			</plugin>
 
-			<!--&lt;!&ndash;jib 构建插件&ndash;&gt;
+			<!--jib 构建插件-->
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
@@ -108,7 +108,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>-->
+			</plugin>
 		</plugins>
 	</build>
 
