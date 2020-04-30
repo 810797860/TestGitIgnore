@@ -87,9 +87,9 @@
 
 					<!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
 					<!--<imageName>${docker.image.prefix}/${name}</imageName>-->
-					<imageTags>
+					<!--<imageTags>
 						<imageTag>${maven.build.version}</imageTag>
-					</imageTags>
+					</imageTags>-->
 
 					<!-- 指定Dockerfile所在的路径 -->
 					<dockerDirectory>${project.basedir}</dockerDirectory>
