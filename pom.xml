@@ -16,6 +16,10 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<skipTests>true</skipTests>
+		<!--<maven.build.version>${version}-${maven.build.timestamp}</maven.build.version>-->
+		<!--<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>-->
+		<docker.image.prefix>registry.cn-hangzhou.aliyuncs.com/oooojbk</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -38,8 +42,8 @@
 	</dependencies>
 
 	<build>
+		<!--<finalName>${project.artifactId}.${maven.build.timestamp}</finalName>-->
 		<plugins>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -75,40 +79,33 @@
 				</executions>
 			</plugin>
 
-			<!--&lt;!&ndash;jib 构建插件&ndash;&gt;
 			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
-				<artifactId>jib-maven-plugin</artifactId>
-				<version>1.7.0</version>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.14</version>
 				<configuration>
-					<from>
-						<image>registry.cn-hangzhou.aliyuncs.com/oooojbk/test-git-ignore</image>
-						<auth>
-							<username>上过度的发条</username>
-							<password>paopao0111234</password>
-						</auth>
-					</from>
-					<to>
-						<image>registry.cn-hangzhou.aliyuncs.com/oooojbk/test-git-ignore</image>
-						<auth>
-							<username>上过度的发条</username>
-							<password>paopao0111234</password>
-						</auth>
-						<tags>
-							<tag>latest</tag>
-						</tags>
-					</to>
-					<allowInsecureRegistries>true</allowInsecureRegistries>
+
+					<!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
+					<!--<imageName>${docker.image.prefix}/${name}</imageName>-->
+					<imageTags>
+						<imageTag>${maven.build.version}</imageTag>
+					</imageTags>
+
+					<!-- 指定Dockerfile所在的路径 -->
+					<dockerDirectory>${project.basedir}</dockerDirectory>
+
+					<!--<resources>-->
+						<!--<resource>-->
+							<!--<targetPath>/</targetPath>-->
+							<!--<directory>${project.build.directory}</directory>-->
+							<!--<include>${project.artifactId}.${maven.build.timestamp}.jar</include>-->
+						<!--</resource>-->
+					<!--</resources>-->
+
+					<!-- 与maven配置文件settings.xml一致 -->
+					<serverId>test-git-ignore</serverId>
 				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>-->
+			</plugin>
 		</plugins>
 	</build>
 

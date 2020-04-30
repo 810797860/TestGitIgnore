@@ -14,7 +14,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String toHello(){
-        return new Date().toString();
+        return "123";
     }
 
     @GetMapping("/hello2")
