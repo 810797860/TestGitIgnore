@@ -17,8 +17,8 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<skipTests>true</skipTests>
-		<!--<maven.build.version>${version}-${maven.build.timestamp}</maven.build.version>-->
-		<!--<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>-->
+		<maven.build.version>${version}-${maven.build.timestamp}</maven.build.version>
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 		<docker.image.prefix>registry.cn-hangzhou.aliyuncs.com/oooojbk</docker.image.prefix>
 	</properties>
 
@@ -42,7 +42,7 @@
 	</dependencies>
 
 	<build>
-		<!--<finalName>${project.artifactId}.${maven.build.timestamp}</finalName>-->
+		<finalName>${project.artifactId}.${maven.build.timestamp}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -86,21 +86,21 @@
 				<configuration>
 
 					<!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
-					<!--<imageName>${docker.image.prefix}/${name}</imageName>-->
-					<!--<imageTags>
+					<imageName>${docker.image.prefix}/${name}</imageName>
+					<imageTags>
 						<imageTag>${maven.build.version}</imageTag>
-					</imageTags>-->
+					</imageTags>
 
 					<!-- 指定Dockerfile所在的路径 -->
 					<dockerDirectory>${project.basedir}</dockerDirectory>
 
-					<!--<resources>-->
-						<!--<resource>-->
-							<!--<targetPath>/</targetPath>-->
-							<!--<directory>${project.build.directory}</directory>-->
-							<!--<include>${project.artifactId}.${maven.build.timestamp}.jar</include>-->
-						<!--</resource>-->
-					<!--</resources>-->
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.artifactId}.${maven.build.timestamp}.jar</include>
+						</resource>
+					</resources>
 
 					<!-- 与maven配置文件settings.xml一致 -->
 					<serverId>test-git-ignore</serverId>
