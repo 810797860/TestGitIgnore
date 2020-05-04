@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -16,10 +16,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<skipTests>true</skipTests>
-		<maven.build.version>latest</maven.build.version>
-		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-		<docker.image.prefix>registry.cn-hangzhou.aliyuncs.com/oooojbk</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -42,8 +38,8 @@
 	</dependencies>
 
 	<build>
-		<finalName>test-git-ignore-0.0.1-SNAPSHOT</finalName>
 		<plugins>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -77,34 +73,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.14</version>
-				<configuration>
-
-					<!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
-					<imageName>${docker.image.prefix}/${name}</imageName>
-					<imageTags>
-						<imageTag>${maven.build.version}</imageTag>
-					</imageTags>
-
-					<!-- 指定Dockerfile所在的路径 -->
-					<dockerDirectory>${project.basedir}</dockerDirectory>
-
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.artifactId}.${maven.build.timestamp}.jar</include>
-						</resource>
-					</resources>
-
-					<!-- 与maven配置文件settings.xml一致 -->
-					<serverId>test-git-ignore</serverId>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
