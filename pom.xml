@@ -42,7 +42,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}.${maven.build.timestamp}</finalName>
+		<finalName>test-git-ignore-0.0.1-SNAPSHOT</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
