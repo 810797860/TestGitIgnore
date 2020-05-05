@@ -14,7 +14,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String toHello(){
-        return "bbb";
+        return "ccc";
     }
 
     @GetMapping("/hello2")
