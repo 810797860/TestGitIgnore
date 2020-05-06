@@ -21,4 +21,9 @@ public class HelloController {
     public String toHello2(){
         return new Date().toString();
     }
+
+    @GetMapping("/hello3")
+    public String hello3(){
+        return "123456";
+    }
 }
