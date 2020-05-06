@@ -14,7 +14,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String toHello(){
-        return "true-finish";
+        return "true-true-finish";
     }
 
     @GetMapping("/hello2")
