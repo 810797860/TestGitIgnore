@@ -14,7 +14,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String toHello(){
-        return "finishing";
+        return "233";
     }
 
     @GetMapping("/hello2")
@@ -24,6 +24,6 @@ public class HelloController {
 
     @GetMapping("/hello3")
     public String hello3(){
-        return "123456";
+        return "777";
     }
 }
